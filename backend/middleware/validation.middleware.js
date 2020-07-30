@@ -22,7 +22,10 @@ let signupValidation = [
 	body('password').trim().isLength({ min: 5 }),
 	body('name').trim().not().isEmpty(),
 ];
+
+let statusValidation = [body('status').trim().not().isEmpty()];
 module.exports = {
 	feedValidation,
 	signupValidation,
+	statusValidation,
 };

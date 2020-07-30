@@ -6,10 +6,13 @@ const { PORT, MONGO_URI } = require('./config/config');
 mongoose
 	.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then((result) => {
-		server.listen(PORT, () => {
+		const app = server.listen(PORT, () => {
 			console.log('Running in port: ', PORT);
 		});
-		console.log('Connection');
+		const io = require('./server/socket').init(app);
+		io.on('connection', (socket) => {
+			console.log('Client connected');
+		});
 	})
 	.catch((err) => {
 		console.log(err);

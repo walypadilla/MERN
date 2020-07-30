@@ -5,7 +5,7 @@ const feedController = require('../controllers/feed.controller');
 const { feedValidation } = require('../middleware/validation.middleware');
 const { validationToken } = require('../middleware/is-auth.middleware');
 
-router.get('/post', validationToken, feedController.getPosts);
+router.get('/posts', validationToken, feedController.getPosts);
 router.post(
 	'/post',
 	[feedValidation, validationToken],

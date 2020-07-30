@@ -11,7 +11,7 @@ const fileStorage = multer.diskStorage({
 		callback(null, 'images');
 	},
 	filename: (req, file, callback) => {
-		callback(null, uuidv4());
+		callback(null, uuidv4() + '-' + file.originalname);
 	},
 });
 const fileFilter = (req, file, cb) => {
